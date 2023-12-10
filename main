@@ -1,0 +1,72 @@
+#include <iostream>
+#include <math.h> 
+// hypot(x, y)	Returns sqrt(x2 +y2) without intermediate overflow or underflow
+// pow(x, y)	Returns the value of x to the power of y
+
+using namespace std;
+
+///
+/// Author: github.com/zahidari
+/// 
+/// Project Euler problem 9
+/// 
+/// a<b<c
+/// a^2 + b^2 = c^2
+/// a+b+c = 1000
+/// a*b*c = ?
+///
+
+
+int main()
+{
+    
+    // define
+    
+    double a=3,b=4,c=5;
+    double sum = a + b + c;
+    bool flag = 0;
+
+    double hypotenus; //  = hypot(a, b);
+    cout << " a   b   c    hypothenus" << endl;
+    
+
+    for (double i = 3; a < c + b; i++) {
+        a = i;
+        if (flag == 1)
+            break;
+        
+        for (double j = i + 1; b< a + c; j++) {
+            b = j;
+            if (flag == 1)
+                break;
+            if (a + b + c >= 1000) {
+                b = 4;
+                break;
+            }
+               
+            
+            for (double k = j+1; c < a+b; k++) {
+                c = k;
+                sum = i + j + k;
+                
+                if (sum == 1000) {
+                    
+                    hypotenus = hypot(i, j);
+                    cout << i << "   " << j << "   " << k << "   "<< hypotenus << endl;
+                    
+                    if (hypotenus == k) {
+                        cout << "the searched numbers are a:" << i << "  b:" << j << "  c:" << k << endl;
+                        flag = 1;
+                        
+                    }
+                    c = 5;
+                    break;
+                }
+            
+           
+            }
+        }
+    }
+
+}
+
